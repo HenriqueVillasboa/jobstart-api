@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: ${APP_PROFILE:producao}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    open-in-view: false
+
+server:
+  error:
+    include-message: always
+    include-exception: false
+    include-stacktrace: never
