@@ -1,7 +1,6 @@
 package br.com.unifil.jobstartapi.model;
 
 import br.com.unifil.jobstartapi.dto.EmpresaRequest;
-import br.com.unifil.jobstartapi.dto.UsuarioRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

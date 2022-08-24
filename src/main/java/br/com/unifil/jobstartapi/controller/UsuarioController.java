@@ -1,7 +1,7 @@
 package br.com.unifil.jobstartapi.controller;
 
 import br.com.unifil.jobstartapi.dto.UsuarioRequest;
-import br.com.unifil.jobstartapi.model.Usuario;
+import br.com.unifil.jobstartapi.dto.UsuarioResponse;
 import br.com.unifil.jobstartapi.service.UsuarioService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping
-    public void validarUsuario(@RequestBody @Valid UsuarioRequest usuarioRequest) {
-        usuarioService.validarUsuario(usuarioRequest);
+    public UsuarioResponse validarUsuario(@RequestBody @Valid UsuarioRequest usuarioRequest) {
+        return usuarioService.validarUsuario(usuarioRequest);
     }
 }

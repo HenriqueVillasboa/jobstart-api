@@ -2,6 +2,7 @@ package br.com.unifil.jobstartapi.service;
 
 import br.com.unifil.jobstartapi.dto.EmpresaRequest;
 import br.com.unifil.jobstartapi.dto.UsuarioRequest;
+import br.com.unifil.jobstartapi.dto.UsuarioResponse;
 import br.com.unifil.jobstartapi.exception.ValidacaoException;
 import br.com.unifil.jobstartapi.model.Empresa;
 import br.com.unifil.jobstartapi.model.Usuario;
@@ -20,11 +21,12 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
-    public void validarUsuario(UsuarioRequest usuarioRequest) {
+    public UsuarioResponse validarUsuario(UsuarioRequest usuarioRequest) {
         var usuario = obterUsuarioPorLogin(usuarioRequest.getLogin());
         if (!usuario.getSenha().equals(usuarioRequest.getSenha())) {
             throw new ValidacaoException("Senha inválida.");
         }
+        return UsuarioResponse.of(usuario);
     }
 
     private Usuario obterUsuarioPorLogin(String login) {
