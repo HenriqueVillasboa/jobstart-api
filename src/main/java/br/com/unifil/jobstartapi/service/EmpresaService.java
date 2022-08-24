@@ -1,5 +1,6 @@
 package br.com.unifil.jobstartapi.service;
 
+import br.com.unifil.jobstartapi.dto.EmpresaRequest;
 import br.com.unifil.jobstartapi.dto.EmpresaResponse;
 import br.com.unifil.jobstartapi.exception.ValidacaoException;
 import br.com.unifil.jobstartapi.model.Empresa;
@@ -20,6 +21,9 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @Transactional(readOnly = true)
     public List<EmpresaResponse> listarEmpresas() {
         return empresaRepository.findAll()
@@ -29,18 +33,18 @@ public class EmpresaService {
     }
 
     @Transactional
-    public EmpresaResponse criarEmpresa(Empresa empresa) {
+    public EmpresaResponse criarEmpresa(EmpresaRequest empresaRequest) {
+        if (empresaRepository.existsByCnpj(empresaRequest.getCnpj())) {
+            throw new ValidacaoException("Já existe uma empresa cadastrada com este CNPJ.");
+        }
+        var empresa = Empresa.of(empresaRequest);
         empresaRepository.save(empresa);
+        usuarioService.criarUsuario(empresa, empresaRequest);
         return EmpresaResponse.of(empresa);
     }
 
     public Empresa obterEmpresaPorId(Long id) {
         return empresaRepository.findById(id)
-                .orElseThrow(() -> EX_EMPRESA_NAO_ENCONTRADA);
-    }
-
-    public Empresa obterEmpresaPorCnpj(String cnpj) {
-        return empresaRepository.findByCnpj(cnpj)
                 .orElseThrow(() -> EX_EMPRESA_NAO_ENCONTRADA);
     }
 }

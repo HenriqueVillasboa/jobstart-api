@@ -27,4 +27,7 @@ public class EmpresaRequest {
 
     @NotEmpty
     private String email;
+
+    @NotEmpty
+    private String senha;
 }

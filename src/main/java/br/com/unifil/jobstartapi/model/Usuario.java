@@ -1,5 +1,6 @@
 package br.com.unifil.jobstartapi.model;
 
+import br.com.unifil.jobstartapi.dto.EmpresaRequest;
 import br.com.unifil.jobstartapi.dto.UsuarioRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
@@ -26,10 +28,10 @@ public class Usuario {
     @JoinColumn(name = "EMPRESA_ID")
     private Empresa empresa;
 
-    @NotEmpty
-    private String nome;
+    @NotBlank
+    private String login;
 
-    @NotEmpty
+    @NotBlank
     private String senha;
 
     private Boolean ativo;
@@ -41,12 +43,12 @@ public class Usuario {
 
     private LocalDateTime dataCadastro;
 
-    public static Usuario of(UsuarioRequest usuarioRequest) {
+    public static Usuario of(Empresa empresa, EmpresaRequest empresaRequest) {
         return Usuario.builder()
-                .empresa(Empresa.ofId(usuarioRequest.getEmpresaId()))
-                .nome(usuarioRequest.getNome())
-                .senha(usuarioRequest.getSenha())
-                .email(usuarioRequest.getEmail())
+                .empresa(empresa)
+                .login(empresa.getCnpj())
+                .email(empresa.getEmail())
+                .senha(empresaRequest.getSenha())
                 .ativo(Boolean.TRUE)
                 .dataCadastro(LocalDateTime.now())
                 .build();

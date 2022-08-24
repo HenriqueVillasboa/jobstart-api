@@ -4,23 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsuarioRequest {
 
-    @NotBlank
-    private String nome;
+    @NotEmpty
+    private String login;
 
-    @NotBlank
-    private String email;
-
-    @NotBlank
+    @NotEmpty
     private String senha;
-
-    @NotNull
-    private Long empresaId;
 }

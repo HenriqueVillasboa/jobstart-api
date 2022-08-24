@@ -5,11 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import java.time.LocalDate;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
@@ -30,6 +28,7 @@ public class Empresa {
     @Column(unique = true)
     private String cnpj;
 
+    @Size(min=10, max=11)
     private String telefone;
 
     @Column(unique = true)
