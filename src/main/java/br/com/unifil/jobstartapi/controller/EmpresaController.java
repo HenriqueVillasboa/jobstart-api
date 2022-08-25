@@ -2,7 +2,6 @@ package br.com.unifil.jobstartapi.controller;
 
 import br.com.unifil.jobstartapi.dto.EmpresaRequest;
 import br.com.unifil.jobstartapi.dto.EmpresaResponse;
-import br.com.unifil.jobstartapi.model.Empresa;
 import br.com.unifil.jobstartapi.service.EmpresaService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;

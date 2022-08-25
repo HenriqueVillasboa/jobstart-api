@@ -18,7 +18,6 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins("*");
     }
 
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations(
