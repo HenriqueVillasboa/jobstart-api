@@ -16,7 +16,7 @@ public class EmpresaResponse {
 
     private Long id;
     private String nomeRazaoSocial;
-    private String localizacao;
+    private String cidade;
     private String cnpj;
     private String telefone;
     private String email;
@@ -26,7 +26,7 @@ public class EmpresaResponse {
         return EmpresaResponse.builder()
                 .id(empresa.getId())
                 .nomeRazaoSocial(empresa.getNomeRazaoSocial())
-                .localizacao(empresa.getLocalizacao())
+                .cidade(empresa.getCidade())
                 .cnpj(empresa.getCnpj())
                 .telefone(empresa.getTelefone())
                 .email(empresa.getEmail())

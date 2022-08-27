@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
@@ -23,12 +22,11 @@ public class Empresa {
 
     private String nomeRazaoSocial;
 
-    private String localizacao;
+    private String cidade;
 
     @Column(unique = true)
     private String cnpj;
 
-    @Size(min=10, max=11)
     private String telefone;
 
     @Column(unique = true)
@@ -39,7 +37,7 @@ public class Empresa {
     public static Empresa of(EmpresaRequest empresaRequest) {
         return Empresa.builder()
                 .nomeRazaoSocial(empresaRequest.getNomeRazaoSocial().toUpperCase())
-                .localizacao(empresaRequest.getLocalizacao().toUpperCase())
+                .cidade(empresaRequest.getCidade().toUpperCase())
                 .cnpj(empresaRequest.getCnpj())
                 .telefone(empresaRequest.getTelefone())
                 .email(empresaRequest.getEmail().toUpperCase())

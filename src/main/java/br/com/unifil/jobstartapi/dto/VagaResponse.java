@@ -15,7 +15,8 @@ public class VagaResponse {
 
     private Long id;
     private EmpresaResponse empresa;
-    private String descricao;
+    private String requisitos;
+    private String beneficios;
     private String cargo;
     private Double salario;
     private String areaAtuacao;

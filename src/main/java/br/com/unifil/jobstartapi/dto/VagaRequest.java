@@ -17,9 +17,6 @@ public class VagaRequest {
     private Long empresaId;
 
     @NotEmpty
-    private String descricao;
-
-    @NotEmpty
     private String cargo;
 
     @Positive
@@ -27,4 +24,8 @@ public class VagaRequest {
 
     @NotEmpty
     private String areaAtuacao;
+
+    private String requisitos;
+
+    private String beneficios;
 }

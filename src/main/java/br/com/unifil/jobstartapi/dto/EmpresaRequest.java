@@ -16,7 +16,7 @@ public class EmpresaRequest {
     private String nomeRazaoSocial;
 
     @NotEmpty
-    private String localizacao;
+    private String cidade;
 
     @CNPJ
     @NotEmpty

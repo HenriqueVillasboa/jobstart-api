@@ -24,20 +24,18 @@ public class Vaga {
     @JoinColumn(name = "EMPRESA_ID")
     private Empresa empresa;
 
-    private String descricao;
-
+    private String requisitos;
+    private String beneficios;
     private String cargo;
-
     private Double salario;
-
     private String areaAtuacao;
-
     private LocalDateTime dataCadastro;
 
     public static Vaga of(VagaRequest vagaRequest) {
         return Vaga.builder()
                 .empresa(Empresa.ofId(vagaRequest.getEmpresaId()))
-                .descricao(vagaRequest.getDescricao().toUpperCase())
+                .requisitos(vagaRequest.getRequisitos().toUpperCase())
+                .beneficios(vagaRequest.getBeneficios().toUpperCase())
                 .cargo(vagaRequest.getCargo().toUpperCase())
                 .salario(vagaRequest.getSalario())
                 .areaAtuacao(vagaRequest.getAreaAtuacao().toUpperCase())
