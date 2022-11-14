@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  app:
+    image: 'jobstart-api:latest'
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+    container_name: jobstart-api
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/jobstart
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=pgadmin123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: postgres:14.2-alpine
+    container_name: jobstart-db
+    environment:
+      POSTGRES_DB: jobstart
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pgadmin123
+    ports:
+      - "5432:5432"

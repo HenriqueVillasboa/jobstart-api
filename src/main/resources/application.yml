@@ -1,9 +1,11 @@
 spring:
-  profiles:
-    active: ${APP_PROFILE:producao}
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  datasource:
+      url: jdbc:postgresql://localhost:5432/jobstart
+      username: postgres
+      password: pgadmin123
   jpa:
     hibernate:
       ddl-auto: update
