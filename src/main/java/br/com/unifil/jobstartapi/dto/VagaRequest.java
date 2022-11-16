@@ -22,7 +22,7 @@ public class VagaRequest {
     private String cargo;
 
     @Positive
-    @NotBlank
+    @NotNull
     private Double salario;
 
     @NotEmpty
